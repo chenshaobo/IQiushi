@@ -36,33 +36,38 @@ class JokeCell: UITableViewCell {
                     self.UserLogo.layer.borderColor = UIColor(white: 0.5, alpha: 0).CGColor 
                     self.UserLogo.layer.cornerRadius = CGRectGetHeight(self.UserLogo.bounds) / 2;   //这里才是实现圆形的地方
                     self.UserLogo.clipsToBounds = true;    //这里设置超出部分自动剪裁掉
-                }
+                }}
             switch self.joke!.jokeType {
                 case  .Text:
                         self.JokeImage.hidden  = true
-                        self.JokeImage.bounds = CGRectMake(0,0,0,0)
+                        self.JokeImage.image = nil
+                        self.JokeImage.bounds = CGRectMake(0,0,5,5)
                 case .Video:
-                        //self.JokeImage.image  = nil
                         self.JokeImage.hidden = true
-                        self.JokeImage.bounds = CGRectMake(0,0,0,0)
+                        self.JokeImage.image = nil
+                        self.JokeImage.bounds = CGRectMake(0,0,5,5)
                 case  .Image:
                     
                     self.JokeImage.hidden = false
-
+                    let screenWidth = UIScreen.mainScreen().bounds.width
+                    let width = CGFloat((self.joke?.imageWidth)!)
+                    let height = CGFloat((self.joke?.imageHeight)!)
+                    print("image :\(width) \(height)")
+                    if screenWidth < width {
+                        let newWidth = screenWidth
+                        let ratio = width / height
+                        let newHeight = screenWidth / CGFloat(ratio)
+                        print("ratio:\(ratio) width \(newWidth) ,height \(newHeight)")
+                        self.JokeImage.bounds = CGRectMake(0,0, newWidth, newHeight)
+                    }else {
+                        print("width \(width) ,height \(height)")
+                        self.JokeImage.bounds = CGRectMake(0,0, width, height)
+                    }
                     let url = self.getImage((self.joke?.id)!, type: 1)
-                    print("owner:\(self.joke?.jokeOwner?.name! )")
-                    self.JokeImage.bounds = CGRectMake(0,0,CGFloat((self.joke?.imageWidth)!), CGFloat((self.joke?.imageHeight)!))
-                    //let imageView = UIImageView(frame: CGRect(x: self.UserLogo.frame.minX,y: self.UserLogo.frame.maxY + 8,width: CGFloat((self.joke?.imageWidth)!),height: CGFloat((self.joke?.imageHeight)!)))
-                        	self.JokeImage.hnk_setImageFromURL(NSURL(string:url)!, success:{
-                            (image) -> Void in
-                            print("size: \(self.joke?.imageWidth) \(self.joke?.imageHeight)")
-                                self.JokeImage.bounds = CGRectMake(0, 0, CGFloat((self.joke?.imageWidth)!), CGFloat((self.joke?.imageHeight)!))
-                             self.JokeImage.image   = image
-                                
-                })
+                   	self.JokeImage.hnk_setImageFromURL(NSURL(string:url)!)
             }
         }
-        }
+        
     }
     
     func getImage(id:Int,type:Int) -> String {

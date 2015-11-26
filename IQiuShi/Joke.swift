@@ -25,10 +25,8 @@ class Joke{
         self.up = json["votes","up"].int!
         self.down = json["votes","down"].int!
         self.jokeImage = json["image"].string
-        self.imageHeight = json["image_size","m",0].int
-        self.imageWidth = json["image_size","m",1].int
-        let type = json["format"].string!
-        print("type:\(type)")
+        self.imageHeight = json["image_size","m",1].int
+        self.imageWidth = json["image_size","m",0].int
         switch json["format"].string!{
             case "word" :jokeType = .Text
             case "image" : jokeType = .Image

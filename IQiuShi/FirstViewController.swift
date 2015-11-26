@@ -32,17 +32,18 @@ class FirstViewController: UIViewController ,UITableViewDelegate, UITableViewDat
     
         //添加下拉刷新
         self.jokeTableView.addSubview(refreshControl)
-        
+        jokeTableView.delegate = self
+        jokeTableView.dataSource  = self
+        initData()
+        jokeTableView.estimatedRowHeight = jokeTableView.rowHeight
+        jokeTableView.rowHeight = UITableViewAutomaticDimension
         
     }
     override func viewWillAppear(animated: Bool) {
         // Do any additional setup after loading the view, typically from a nib.
-        jokeTableView.delegate = self
-        jokeTableView.dataSource  = self
-        initData()
+        
         super.viewWillAppear(animated)
-        jokeTableView.estimatedRowHeight = jokeTableView.rowHeight
-        jokeTableView.rowHeight = UITableViewAutomaticDimension
+       
     }
     
     func initData(){
