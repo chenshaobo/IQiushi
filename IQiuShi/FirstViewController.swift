@@ -94,10 +94,10 @@ class FirstViewController: UIViewController ,UITableViewDelegate, UITableViewDat
         // #warning Incomplete implementation, return the number of rows
         return jokes.count
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("select channel \(indexPath.row)")
-        _ = tableView.cellForRowAtIndexPath(indexPath) as! JokeCell
-    }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        print("select channel \(indexPath.row)")
+//        _ = tableView.cellForRowAtIndexPath(indexPath) as! JokeCell
+//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("JokeCell", forIndexPath: indexPath) as! JokeCell

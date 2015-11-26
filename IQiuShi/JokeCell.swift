@@ -28,9 +28,8 @@ class JokeCell: UITableViewCell {
             self.JokeContent.text = self.joke?.jokeContent
             self.upButton.setTitle("👍(\(self.joke!.up))" ,forState:.Normal)
             self.downButton.setTitle("👎(\(self.joke!.down))" ,forState:.Normal)
-            
+            dispatch_async(dispatch_get_main_queue()){
             if let _ = self.joke?.jokeOwner?.logo {
-                dispatch_async(dispatch_get_main_queue()){
                    let  url = self.getImage((self.joke?.jokeOwner?.id)!, type: 0)
                     self.UserLogo.hnk_setImageFromURL( NSURL(string:url)!)
                     self.UserLogo.layer.borderWidth = 1;  //设置的UIImageView的边框宽度
@@ -38,34 +37,31 @@ class JokeCell: UITableViewCell {
                     self.UserLogo.layer.cornerRadius = CGRectGetHeight(self.UserLogo.bounds) / 2;   //这里才是实现圆形的地方
                     self.UserLogo.clipsToBounds = true;    //这里设置超出部分自动剪裁掉
                 }
-            }
             switch self.joke!.jokeType {
-                case  .Text: self.JokeImage.hidden = true
+                case  .Text:
+                        self.JokeImage.hidden  = true
+                        self.JokeImage.bounds = CGRectMake(0,0,0,0)
+                case .Video:
+                        //self.JokeImage.image  = nil
+                        self.JokeImage.hidden = true
+                        self.JokeImage.bounds = CGRectMake(0,0,0,0)
                 case  .Image:
-                    dispatch_async(dispatch_get_main_queue()){
+                    
+                    self.JokeImage.hidden = false
+
                     let url = self.getImage((self.joke?.id)!, type: 1)
-                        print("url:\(url)")
-                        self.JokeImage.hnk_setImageFromURL(NSURL(string:url)! ,success:{
-                            (image)  -> Void in
-                            let screen_width = UIScreen.mainScreen().bounds.width
-                            
-                            // Ratio Width / Height
-                            let ratio =  image.size.height / image.size.width
-                            
-                            // Calculated Height for the picture
-                            let newHeight = screen_width * ratio
-                            
-                            
-                            // METHOD 2
-                            self.JokeImage.bounds = CGRectMake(0,0,screen_width,newHeight)
-                            
-                            self.JokeImage.image = image
-                        })
-                        //self.JokeImage.sizeToFit()
-                        //self.JokeImage.contentMode = UIViewContentMode.ScaleAspectFit
-                }
-                default: break 
+                    print("owner:\(self.joke?.jokeOwner?.name! )")
+                    self.JokeImage.bounds = CGRectMake(0,0,CGFloat((self.joke?.imageWidth)!), CGFloat((self.joke?.imageHeight)!))
+                    //let imageView = UIImageView(frame: CGRect(x: self.UserLogo.frame.minX,y: self.UserLogo.frame.maxY + 8,width: CGFloat((self.joke?.imageWidth)!),height: CGFloat((self.joke?.imageHeight)!)))
+                        	self.JokeImage.hnk_setImageFromURL(NSURL(string:url)!, success:{
+                            (image) -> Void in
+                            print("size: \(self.joke?.imageWidth) \(self.joke?.imageHeight)")
+                                self.JokeImage.bounds = CGRectMake(0, 0, CGFloat((self.joke?.imageWidth)!), CGFloat((self.joke?.imageHeight)!))
+                             self.JokeImage.image   = image
+                                
+                })
             }
+        }
         }
     }
     

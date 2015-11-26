@@ -25,6 +25,10 @@ class Joke{
         self.up = json["votes","up"].int!
         self.down = json["votes","down"].int!
         self.jokeImage = json["image"].string
+        self.imageHeight = json["image_size","m",0].int
+        self.imageWidth = json["image_size","m",1].int
+        let type = json["format"].string!
+        print("type:\(type)")
         switch json["format"].string!{
             case "word" :jokeType = .Text
             case "image" : jokeType = .Image
@@ -32,6 +36,7 @@ class Joke{
             default : jokeType = .Text
         }
     }
+    
     var  id :Int?
     var  jokeOwner :User?
     var  jokeContent : String?
@@ -40,6 +45,8 @@ class Joke{
     var  craete_at : Int?
     var  up: Int
     var  down:Int
+    var  imageWidth : Int?
+    var  imageHeight : Int?
     
 }
 
