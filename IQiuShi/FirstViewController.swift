@@ -16,7 +16,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate, UITableViewDat
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "handleRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         
         return refreshControl
         }()
@@ -67,6 +67,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate, UITableViewDat
             }
         }
         self.curPage = self.curPage + 1
+        print("curpage:\(curPage)   ")
     }
     
     //上拉刷新拉获取数据

@@ -23,6 +23,8 @@
 		430A6C731C053B90001F12DC /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 430A6C651C053B89001F12DC /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		43F6ECBE1C05406A001E6DCB /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F6ECB11C05405C001E6DCB /* SwiftyJSON.framework */; };
 		43F6ECBF1C05406A001E6DCB /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43F6ECB11C05405C001E6DCB /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		43F6ECD41C058D1D001E6DCB /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F6ECD31C058D0F001E6DCB /* MBProgressHUD.framework */; };
+		43F6ECD51C058D1D001E6DCB /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43F6ECD31C058D0F001E6DCB /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +168,27 @@
 			remoteGlobalIDString = 2E4FEFDA19575BE100351305;
 			remoteInfo = "SwiftyJSON iOS";
 		};
+		43F6ECD01C058D0F001E6DCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43F6ECCB1C058D0F001E6DCB /* MBProgressHUD.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D286A7491518C70F00E13FB8;
+			remoteInfo = "MBProgressHUD Static Library";
+		};
+		43F6ECD21C058D0F001E6DCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43F6ECCB1C058D0F001E6DCB /* MBProgressHUD.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D104D7A1ACA36CC00973364;
+			remoteInfo = "MBProgressHUD Framework";
+		};
+		43F6ECD61C058D1D001E6DCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43F6ECCB1C058D0F001E6DCB /* MBProgressHUD.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D104D791ACA36CC00973364;
+			remoteInfo = "MBProgressHUD Framework";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -175,6 +198,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				43F6ECD51C058D1D001E6DCB /* MBProgressHUD.framework in Embed Frameworks */,
 				430A6C561C053B79001F12DC /* Haneke.framework in Embed Frameworks */,
 				430A6C731C053B90001F12DC /* Alamofire.framework in Embed Frameworks */,
 				43F6ECBF1C05406A001E6DCB /* SwiftyJSON.framework in Embed Frameworks */,
@@ -200,6 +224,8 @@
 		430A6C491C053B70001F12DC /* Haneke.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Haneke.xcodeproj; path = IQiuShi/LIBRARY/Haneke.xcodeproj; sourceTree = "<group>"; };
 		430A6C5A1C053B89001F12DC /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = IQiuShi/LIBRARY/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		43F6ECA61C05405C001E6DCB /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = IQiuShi/LIBRARY/SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
+		43F6ECCB1C058D0F001E6DCB /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = IQiuShi/LIBRARY/MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
+		43F6ECD81C058D93001E6DCB /* MBProgressHUDSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUDSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43F6ECD41C058D1D001E6DCB /* MBProgressHUD.framework in Frameworks */,
 				430A6C551C053B79001F12DC /* Haneke.framework in Frameworks */,
 				430A6C721C053B90001F12DC /* Alamofire.framework in Frameworks */,
 				43F6ECBE1C05406A001E6DCB /* SwiftyJSON.framework in Frameworks */,
@@ -219,6 +246,7 @@
 		430011F81C047C990065CE88 = {
 			isa = PBXGroup;
 			children = (
+				43F6ECD81C058D93001E6DCB /* MBProgressHUDSwift-Bridging-Header.h */,
 				430A6C761C053C1E001F12DC /* Library */,
 				430012031C047C9A0065CE88 /* IQiuShi */,
 				430012021C047C9A0065CE88 /* Products */,
@@ -237,13 +265,11 @@
 			isa = PBXGroup;
 			children = (
 				430012041C047C9A0065CE88 /* AppDelegate.swift */,
-				430012061C047C9A0065CE88 /* FirstViewController.swift */,
+				43F6ECCA1C0580AD001E6DCB /* model */,
+				43F6ECC91C058098001E6DCB /* view */,
+				43F6ECC81C058075001E6DCB /* controller */,
 				430A6C391C053AB0001F12DC /* JokeUtil.swift */,
-				4300121F1C04832C0065CE88 /* Joke.swift */,
-				430012081C047C9A0065CE88 /* SecondViewController.swift */,
 				4300120A1C047C9A0065CE88 /* Main.storyboard */,
-				430012181C047EED0065CE88 /* JokeCell.swift */,
-				4300121A1C047F0E0065CE88 /* JokeCell.xib */,
 				4300120D1C047C9A0065CE88 /* Assets.xcassets */,
 				4300120F1C047C9A0065CE88 /* LaunchScreen.storyboard */,
 				430012121C047C9A0065CE88 /* Info.plist */,
@@ -278,6 +304,7 @@
 		430A6C761C053C1E001F12DC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				43F6ECCB1C058D0F001E6DCB /* MBProgressHUD.xcodeproj */,
 				43F6ECA61C05405C001E6DCB /* SwiftyJSON.xcodeproj */,
 				430A6C491C053B70001F12DC /* Haneke.xcodeproj */,
 				430A6C5A1C053B89001F12DC /* Alamofire.xcodeproj */,
@@ -295,6 +322,41 @@
 				43F6ECB91C05405C001E6DCB /* SwiftyJSON.framework */,
 				43F6ECBB1C05405C001E6DCB /* SwiftyJSON.framework */,
 				43F6ECBD1C05405C001E6DCB /* SwiftyJSON tvOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43F6ECC81C058075001E6DCB /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				430012061C047C9A0065CE88 /* FirstViewController.swift */,
+				430012081C047C9A0065CE88 /* SecondViewController.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		43F6ECC91C058098001E6DCB /* view */ = {
+			isa = PBXGroup;
+			children = (
+				430012181C047EED0065CE88 /* JokeCell.swift */,
+				4300121A1C047F0E0065CE88 /* JokeCell.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		43F6ECCA1C0580AD001E6DCB /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4300121F1C04832C0065CE88 /* Joke.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		43F6ECCC1C058D0F001E6DCB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43F6ECD11C058D0F001E6DCB /* libMBProgressHUD.a */,
+				43F6ECD31C058D0F001E6DCB /* MBProgressHUD.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,6 +379,7 @@
 				430A6C581C053B79001F12DC /* PBXTargetDependency */,
 				430A6C751C053B90001F12DC /* PBXTargetDependency */,
 				43F6ECC11C05406B001E6DCB /* PBXTargetDependency */,
+				43F6ECD71C058D1D001E6DCB /* PBXTargetDependency */,
 			);
 			name = IQiuShi;
 			productName = IQiuShi;
@@ -356,6 +419,10 @@
 				{
 					ProductGroup = 430A6C4A1C053B70001F12DC /* Products */;
 					ProjectRef = 430A6C491C053B70001F12DC /* Haneke.xcodeproj */;
+				},
+				{
+					ProductGroup = 43F6ECCC1C058D0F001E6DCB /* Products */;
+					ProjectRef = 43F6ECCB1C058D0F001E6DCB /* MBProgressHUD.xcodeproj */;
 				},
 				{
 					ProductGroup = 43F6ECA71C05405C001E6DCB /* Products */;
@@ -489,6 +556,20 @@
 			remoteRef = 43F6ECBC1C05405C001E6DCB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		43F6ECD11C058D0F001E6DCB /* libMBProgressHUD.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMBProgressHUD.a;
+			remoteRef = 43F6ECD01C058D0F001E6DCB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		43F6ECD31C058D0F001E6DCB /* MBProgressHUD.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MBProgressHUD.framework;
+			remoteRef = 43F6ECD21C058D0F001E6DCB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -536,6 +617,11 @@
 			isa = PBXTargetDependency;
 			name = "SwiftyJSON iOS";
 			targetProxy = 43F6ECC01C05406B001E6DCB /* PBXContainerItemProxy */;
+		};
+		43F6ECD71C058D1D001E6DCB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MBProgressHUD Framework";
+			targetProxy = 43F6ECD61C058D1D001E6DCB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -648,6 +734,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = IQiuShi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = chensb.IQiuShi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -660,6 +747,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = IQiuShi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = chensb.IQiuShi;
 				PRODUCT_NAME = "$(TARGET_NAME)";

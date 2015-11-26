@@ -8,5 +8,6 @@
 
 import Foundation
 
-let TEXT_JOKE = "http://m2.qiushibaike.com/article/list/text"
+let TEXT_JOKE = "http://m2.qiushibaike.com/article/list/hot"
 let USER_LOGO = "http://pic.qiushibaike.com/system/avtnew/"
+let JOKE_IMG  =  "http://pic.qiushibaike.com/system/pictures/"

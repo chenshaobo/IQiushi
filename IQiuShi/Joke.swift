@@ -8,23 +8,38 @@
 
 import Foundation
 import SwiftyJSON
+
+enum JokeType{
+    case Text
+    case Image
+    case Video
+}
 class Joke{
-    enum JokeType{
-        case Text
-        case Image
-        case Video
-    }
-    
+    var jokeType :JokeType
     init(json:SwiftyJSON.JSON){
+        self.id = json["id"].int
         self.jokeOwner = User(data: json["user"])
         self.craete_at = json["created_at"].int
         self.jokeContent = json["content"].string
         self.share_count = json["share_count"].int
+        self.up = json["votes","up"].int!
+        self.down = json["votes","down"].int!
+        self.jokeImage = json["image"].string
+        switch json["format"].string!{
+            case "word" :jokeType = .Text
+            case "image" : jokeType = .Image
+            case "video": jokeType = .Video
+            default : jokeType = .Text
+        }
     }
+    var  id :Int?
     var  jokeOwner :User?
     var  jokeContent : String?
+    var  jokeImage : String?
     var  share_count: Int?
     var  craete_at : Int?
+    var  up: Int
+    var  down:Int
     
 }
 
