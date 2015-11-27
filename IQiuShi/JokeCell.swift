@@ -52,15 +52,15 @@ class JokeCell: UITableViewCell {
                     let screenWidth = UIScreen.mainScreen().bounds.width
                     let width = CGFloat((self.joke?.imageWidth)!)
                     let height = CGFloat((self.joke?.imageHeight)!)
-                    print("image :\(width) \(height)")
+                    //print("image :\(width) \(height)")
                     if screenWidth < width {
                         let newWidth = screenWidth
                         let ratio = width / height
                         let newHeight = screenWidth / CGFloat(ratio)
-                        print("ratio:\(ratio) width \(newWidth) ,height \(newHeight)")
+                        //print("ratio:\(ratio) width \(newWidth) ,height \(newHeight)")
                         self.JokeImage.bounds = CGRectMake(0,0, newWidth, newHeight)
                     }else {
-                        print("width \(width) ,height \(height)")
+                        //print("width \(width) ,height \(height)")
                         self.JokeImage.bounds = CGRectMake(0,0, width, height)
                     }
                     let url = self.getImage((self.joke?.id)!, type: 1)
