@@ -25,13 +25,21 @@ class Joke{
         self.up = json["votes","up"].int!
         self.down = json["votes","down"].int!
         self.jokeImage = json["image"].string
-        self.imageHeight = json["image_size","m",0].int
-        self.imageWidth = json["image_size","m",1].int
+        
         switch json["format"].string!{
             case "word" :jokeType = .Text
-            case "image" : jokeType = .Image
-            case "video": jokeType = .Video
-            default : jokeType = .Text
+            case "image" :
+                jokeType = .Image
+                self.imageHeight = json["image_size","m",0].int
+                self.imageWidth = json["image_size","m",1].int
+            case "video":
+                jokeType = .Video
+                self.imageHeight = json["pic_size",0].int
+                self.imageWidth = json["pic_size",1].int
+                self.videoUrl = json["low_url"].string
+                self.videoPicUrl = json["pic_url"].string
+            default:
+                jokeType = .Text
         }
     }
     
@@ -45,16 +53,17 @@ class Joke{
     var  down:Int
     var  imageWidth : Int?
     var  imageHeight : Int?
-    
+    var  videoUrl : String?
+    var  videoPicUrl :String?
 }
 
 
 class User{
-    var  name :String?
+    var  name :String
     var  id : Int?
     var  logo: String?
     init(data:SwiftyJSON.JSON){
-        self.name = data["login"].string
+        self.name = data["login"].string ?? "匿名"
         self.id = data["id"].int
         self.logo = data["icon"].string
    }

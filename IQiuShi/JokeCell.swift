@@ -10,7 +10,7 @@ import UIKit
 import Haneke
 import MBProgressHUD
 
-class JokeCell: UITableViewCell {
+class JokeCell: UITableViewCell{
     @IBOutlet weak var UserLogo: UIImageView!
     
     @IBOutlet weak var JokeContent: UILabel!
@@ -20,57 +20,48 @@ class JokeCell: UITableViewCell {
     @IBOutlet weak var downButton: UIButton!
     @IBOutlet weak var upButton: UIButton!
     
-    var vote = 0
+
     
+    
+    var vote = 0
+    var  viewController : FirstViewController!
     var  joke : Joke?{
         didSet {
             self.UserName.text = self.joke?.jokeOwner?.name
             self.JokeContent.text = self.joke?.jokeContent
             self.upButton.setTitle("👍(\(self.joke!.up))" ,forState:.Normal)
             self.downButton.setTitle("👎(\(self.joke!.down))" ,forState:.Normal)
-            dispatch_async(dispatch_get_main_queue()){
             if let _ = self.joke?.jokeOwner?.logo {
-                   let  url = self.getImage((self.joke?.jokeOwner?.id)!, type: 0)
+                   let  url = self.getImageUrl((self.joke?.jokeOwner?.id)!, type: 0)
                     self.UserLogo.hnk_setImageFromURL( NSURL(string:url)!)
                     self.UserLogo.layer.borderWidth = 1;  //设置的UIImageView的边框宽度
                     self.UserLogo.layer.borderColor = UIColor(white: 0.5, alpha: 0).CGColor 
                     self.UserLogo.layer.cornerRadius = CGRectGetHeight(self.UserLogo.bounds) / 2;   //这里才是实现圆形的地方
                     self.UserLogo.clipsToBounds = true;    //这里设置超出部分自动剪裁掉
-                }}
+            }
             switch self.joke!.jokeType {
                 case  .Text:
                         self.JokeImage.hidden  = true
                         self.JokeImage.image = nil
                         self.JokeImage.bounds = CGRectMake(0,0,5,5)
                 case .Video:
-                        self.JokeImage.hidden = true
+                        /*self.JokeImage.hidden = true
                         self.JokeImage.image = nil
-                        self.JokeImage.bounds = CGRectMake(0,0,5,5)
+                        self.JokeImage.bounds = CGRectMake(0,0,5,5)*/
+                    print("video:\(self.joke?.videoPicUrl),owner : \(self.joke?.jokeOwner?.name)")
+                    displayImage((self.joke?.videoPicUrl)!)
+                
                 case  .Image:
                     
-                    self.JokeImage.hidden = false
-                    let screenWidth = UIScreen.mainScreen().bounds.width
-                    let width = CGFloat((self.joke?.imageWidth)!)
-                    let height = CGFloat((self.joke?.imageHeight)!)
-                    //print("image :\(width) \(height)")
-                    if screenWidth < width {
-                        let newWidth = screenWidth
-                        let ratio = width / height
-                        let newHeight = screenWidth / CGFloat(ratio)
-                        //print("ratio:\(ratio) width \(newWidth) ,height \(newHeight)")
-                        self.JokeImage.bounds = CGRectMake(0,0, newWidth, newHeight)
-                    }else {
-                        //print("width \(width) ,height \(height)")
-                        self.JokeImage.bounds = CGRectMake(0,0, width, height)
-                    }
-                    let url = self.getImage((self.joke?.id)!, type: 1)
-                   	self.JokeImage.hnk_setImageFromURL(NSURL(string:url)!)
+                    let url = self.getImageUrl((self.joke?.id)!, type: 1)
+                    displayImage(url)
+                
             }
         }
         
     }
     
-    func getImage(id:Int,type:Int) -> String {
+    func getImageUrl(id:Int,type:Int) -> String {
         let pre = id / 10000
         
         if type == 0 {
@@ -81,6 +72,35 @@ class JokeCell: UITableViewCell {
         
     }
     
+    func displayImage(url:String){
+        self.JokeImage.hidden = false
+        let screenWidth = UIScreen.mainScreen().bounds.width
+        let width = CGFloat((self.joke?.imageWidth)!)
+        let height = CGFloat((self.joke?.imageHeight)!)
+        //print("image :\(width) \(height)")
+        if screenWidth < width {
+            let newWidth = screenWidth
+            let ratio = width / height
+            let newHeight = screenWidth / CGFloat(ratio)
+            //print("ratio:\(ratio) width \(newWidth) ,height \(newHeight)")
+            self.JokeImage.bounds = CGRectMake(0,0, newWidth, newHeight)
+        }else {
+            //print("width \(width) ,height \(height)")
+            self.JokeImage.bounds = CGRectMake(0,0, width, height)
+        }
+        self.JokeImage.hnk_setImageFromURL(NSURL(string:url)!)
+        let tap = UITapGestureRecognizer(target:self,action:Selector("playOrStop" ))
+        self.JokeImage.addGestureRecognizer(tap)
+    }
+    
+    func playOrStop(){
+        print("touche me")
+        if self.joke?.jokeType == .Video{
+            self.viewController.playerVideo((self.joke?.videoUrl)!, cell:self)
+        }
+    }
+
+
     @IBAction func up(sender: UIButton) {
         if vote == 0  {
             vote  = 1

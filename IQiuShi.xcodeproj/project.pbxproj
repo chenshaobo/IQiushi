@@ -25,6 +25,7 @@
 		43F6ECBF1C05406A001E6DCB /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43F6ECB11C05405C001E6DCB /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		43F6ECD41C058D1D001E6DCB /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F6ECD31C058D0F001E6DCB /* MBProgressHUD.framework */; };
 		43F6ECD51C058D1D001E6DCB /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43F6ECD31C058D0F001E6DCB /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		43FBE89E1C08315D000F065C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FBE89D1C08315D000F065C /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +227,7 @@
 		43F6ECA61C05405C001E6DCB /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = IQiuShi/LIBRARY/SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
 		43F6ECCB1C058D0F001E6DCB /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = IQiuShi/LIBRARY/MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
 		43F6ECD81C058D93001E6DCB /* MBProgressHUDSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUDSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		43FBE89D1C08315D000F065C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 				4300120D1C047C9A0065CE88 /* Assets.xcassets */,
 				4300120F1C047C9A0065CE88 /* LaunchScreen.storyboard */,
 				430012121C047C9A0065CE88 /* Info.plist */,
+				43FBE89D1C08315D000F065C /* Player.swift */,
 			);
 			path = IQiuShi;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				430012201C04832C0065CE88 /* Joke.swift in Sources */,
 				430A6C3A1C053AB0001F12DC /* JokeUtil.swift in Sources */,
 				430012051C047C9A0065CE88 /* AppDelegate.swift in Sources */,
+				43FBE89E1C08315D000F065C /* Player.swift in Sources */,
 				430012191C047EED0065CE88 /* JokeCell.swift in Sources */,
 				430012071C047C9A0065CE88 /* FirstViewController.swift in Sources */,
 			);

@@ -10,7 +10,9 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class FirstViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource {
+class FirstViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource, PlayerDelegate{
+    
+    
     
     @IBOutlet weak var jokeTableView: UITableView!
     
@@ -22,6 +24,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate, UITableViewDat
         }()
     
     var jokes = [Joke]()
+    var  videoPlayer = Player()
     var curPage = 1
     let pageSize = 30
     override func viewDidLoad() {
@@ -103,12 +106,41 @@ class FirstViewController: UIViewController ,UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("JokeCell", forIndexPath: indexPath) as! JokeCell
         cell.joke = jokes[indexPath.row]
+        cell.viewController = self
         //快到底部 加载 下一页的内容
         let index =  Int(Double(jokes.count) * 0.9)
         if index == indexPath.row{
             getJokeData()
         }
         return cell
+    }
+    
+    func playerVideo(url:String,cell:JokeCell   ){
+        self.videoPlayer.setUrl(NSURL(string:url)!)
+        self.videoPlayer.delegate = self
+        self.videoPlayer.view.frame = cell.bounds
+        
+        self.addChildViewController(self.videoPlayer)
+        cell.addSubview(self.videoPlayer.view)
+        self.videoPlayer.didMoveToParentViewController(self)
+        self.videoPlayer.playFromBeginning()
+    }
+    
+    func playerReady(player: Player) {
+    }
+    
+    func playerPlaybackStateDidChange(player: Player) {
+    }
+    
+    func playerBufferingStateDidChange(player: Player) {
+    }
+    
+    func playerPlaybackWillStartFromBeginning(player: Player) {
+    }
+    
+    func playerPlaybackDidEnd(player: Player) {
+        self.videoPlayer.setupPlayerItem(nil)
+        self.videoPlayer.view.removeFromSuperview()
     }
 }
 
